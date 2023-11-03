@@ -1,10 +1,7 @@
 package com.example.backend;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -53,5 +50,34 @@ public class ControllerLayer {
     {
         Branch br = serviceLayer.recentBranch();
         return serviceLayer.studentsInRecentBranch(br);
+    }
+
+    @PostMapping("/addLift")
+    public String addLift(@RequestBody Lift lift)
+    {
+        return serviceLayer.addLift(lift);
+    }
+
+    @PostMapping("/addPassenger")
+    public String addPassenger(@RequestBody Passenger passenger)
+    {
+        return serviceLayer.addPasseneger(passenger);
+    }
+
+    @GetMapping("/passengerList")
+    public List<Integer> showPassengers()
+    {
+        return serviceLayer.showPassengers();
+    }
+
+    @GetMapping("/deletePassengers")
+    public List<Integer> deletePassengers()
+    {
+        return serviceLayer.deletePassengers();
+    }
+
+    @GetMapping("/pplWithXwt/{x}")
+    public int pplWithXweight(@PathVariable ("x")int x){
+        return serviceLayer.pplWithXweight(x);
     }
 }

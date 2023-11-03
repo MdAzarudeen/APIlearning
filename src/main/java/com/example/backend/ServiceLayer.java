@@ -109,4 +109,54 @@ public class ServiceLayer {
         }
         return roll;
     }
+
+    public String addLift(Lift lift)
+    {
+        Map<Integer,Lift> liftMap = repositoryLayer.getLiftMap();
+        liftMap.put(lift.getLiftNo(),lift);
+        return "Lift added Successfully";
+    }
+    public String addPasseneger(Passenger passenger)
+    {
+        Map<Integer,Passenger> passengerMap = repositoryLayer.getPassengerMap();
+        passengerMap.put(passenger.getId(),passenger);
+        return "Passenger added Successfully";
+    }
+
+    public List<Integer> showPassengers()
+    {
+        List<Integer> passengerList = new ArrayList<>();
+        Map<Integer,Passenger> passengerMap = repositoryLayer.getPassengerMap();
+        for(Passenger passenger: passengerMap.values())
+        {
+            passengerList.add(passenger.getId());
+        }
+        return passengerList;
+
+    }
+    public List<Integer> deletePassengers()
+    {
+        Map<Integer,Passenger> passengerMap = repositoryLayer.getPassengerMap();
+        List<Integer> passengerList = new ArrayList<>();
+        for(Passenger passenger: passengerMap.values())
+        {
+            if(passenger.getId()>5)
+                passengerList.add(passenger.getId());
+        }
+        System.out.println("Passengers with Id less than 5 have been deleted");
+        return passengerList;
+    }
+
+    public int pplWithXweight(int x)
+    {
+
+        int ct =0;
+        Map<Integer,Passenger> passengerMap = repositoryLayer.getPassengerMap();
+        for(Passenger passenger: passengerMap.values()) {
+            if (passenger.getWeight() <= x)
+                ct++;
+        }
+        return ct;
+    }
+
 }

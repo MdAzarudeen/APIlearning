@@ -44,4 +44,22 @@ public class RepositoryLayer {
     public void setGrantMap(Map<Branch, Grant> grantMap) {
         this.grantMap = grantMap;
     }
+
+    private Map<Integer,Lift> liftMap = new HashMap<>();
+    private Map<Integer,Passenger> passengerMap = new HashMap<>();
+    public Map<Integer, Lift> getLiftMap() {
+        return liftMap;
+    }
+
+    public void setLiftMap(Map<Integer, Lift> liftMap) {
+        this.liftMap = liftMap;
+    }
+
+    public Map<Integer, Passenger> getPassengerMap() {
+        return passengerMap;
+    }
+
+    public void setPassengerMap(Map<Integer, Passenger> passengerMap) {
+        this.passengerMap = passengerMap;
+    }
 }
