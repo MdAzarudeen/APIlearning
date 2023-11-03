@@ -1,4 +1,4 @@
-package Mock;
+package com.example.backend;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +17,7 @@ public class BookService {
     }
 
     public String addAuthor(Author author){
-        HashMap<String,Author> authorMap = bookRepository.getAuthorMap();
+        HashMap<String, Author> authorMap = bookRepository.getAuthorMap();
         authorMap.put(author.getName(),author);
         return "Author has been added";
     }
@@ -47,7 +47,7 @@ public class BookService {
         {
             if(bo.getName()==givenBook)
             {
-                bo.getNoOfPages()=givenPages;
+                bo.setNoOfPages(givenPages);
                 return "No of Pages has been updated for the given book";
             }
         }
@@ -58,7 +58,7 @@ public class BookService {
     public String getAuthorWithHighestPages()
     {
         HashMap<String,Book> bookMap = bookRepository.getBookMap();
-        HashMap<String ,Author> authorMap = bookRepository.getAuthorMap();
+        HashMap<String , Author> authorMap = bookRepository.getAuthorMap();
         HashMap<String,Integer> authorBookMap = bookRepository.getAuthorBookMap();
         for(Author author: authorMap.values())
         {
@@ -66,8 +66,16 @@ public class BookService {
             for(Book book: bookMap.values())
             {
                 if(book.getAuthorName()==authorName)
-                    authorBookMap.put(authorName,authorBookMap.getOrDefault(authorName,book))
+                    authorBookMap.put(authorName,authorBookMap.getOrDefault(authorName,0)+1);
             }
         }
+        int res=0;
+        String ans = "";
+        for(String au: authorBookMap.keySet())
+        {
+           if(authorBookMap.get(au)>res)
+               ans = au;
+        }
+            return ans;
     }
 }

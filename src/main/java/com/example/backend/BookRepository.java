@@ -1,4 +1,4 @@
-package Mock;
+package com.example.backend;
 
 import org.springframework.stereotype.Repository;
 
@@ -8,8 +8,16 @@ import java.util.HashMap;
 @Repository
 public class BookRepository {
 
-    private HashMap<String,Book> bookMap = new HashMap<>();
-    private HashMap<String,Author> authorMap = new HashMap<>();
+    private HashMap<String, Book> bookMap = new HashMap<>();
+    private HashMap<String, Author> authorMap = new HashMap<>();
+
+    public HashMap<String, Author> getAuthorMap() {
+        return authorMap;
+    }
+
+    public void setAuthorMap(HashMap<String, Author> authorMap) {
+        this.authorMap = authorMap;
+    }
 
     private HashMap<String, Integer> authorBookMap = new HashMap<>();
 
@@ -29,11 +37,5 @@ public class BookRepository {
         this.bookMap = bookMap;
     }
 
-    public HashMap<String, Author> getAuthorMap() {
-        return authorMap;
-    }
 
-    public void setAuthorMap(HashMap<String, Author> authorMap) {
-        this.authorMap = authorMap;
     }
-}

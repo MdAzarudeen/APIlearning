@@ -1,4 +1,4 @@
-package Mock;
+package com.example.backend;
 
 public class Book {
     private String name;

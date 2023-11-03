@@ -7,11 +7,11 @@ import java.util.Map;
 
 @Repository
 public class RepositoryLayer {
-    private Map<Integer,Student> studentMap = new HashMap<>();
-    private Map<String,Hod> hodMap = new HashMap<>();
-    private Map<Branch,Grant> grantMap = new HashMap<>();
+    private Map<Integer, Student> studentMap = new HashMap<>();
+    private Map<String, Hod> hodMap = new HashMap<>();
+    private Map<Branch, Grant> grantMap = new HashMap<>();
 
-    private Map<Branch,Integer> passingStudentsMap = new HashMap<>();
+    private Map<Branch, Integer> passingStudentsMap = new HashMap<>();
 
     public Map<Branch, Integer> getPassingStudentsMap() {
         return passingStudentsMap;
@@ -45,8 +45,9 @@ public class RepositoryLayer {
         this.grantMap = grantMap;
     }
 
-    private Map<Integer,Lift> liftMap = new HashMap<>();
-    private Map<Integer,Passenger> passengerMap = new HashMap<>();
+    private Map<Integer, Lift> liftMap = new HashMap<>();
+    private Map<Integer, Passenger> passengerMap = new HashMap<>();
+
     public Map<Integer, Lift> getLiftMap() {
         return liftMap;
     }
@@ -62,4 +63,5 @@ public class RepositoryLayer {
     public void setPassengerMap(Map<Integer, Passenger> passengerMap) {
         this.passengerMap = passengerMap;
     }
+
 }
